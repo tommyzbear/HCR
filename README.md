@@ -34,3 +34,21 @@ sudo cp ~Kinect/libfreenect/platform/linux/udev/51-kinect.rules /etc/udev/rules.
 
 ### OpenNI
 
+Download OpenNi-Bin-Dev-Linux-x64-v1.5.7.10.tar
+
+```cd OpenNI-Bin-Dev-Linux-x64-v1.5.7.10```
+```sudo ./install.sh```
+
+### Sensor
+
+Download Sensor-Bin-Linux-x64-v5.1.2.1.tar.bz2
+
+```cd Sensor-Bin-Linux-x64-v5.1.2.1```
+```sudo ./install.sh```
+
+### NITE
+
+Download NITE-Bin-Dev-Linux-x64-v1.5.2.23.tar
+
+```cd NITE-Bin-Dev-Linux-x64-v1.5.2.23```
+```sudo ./install.sh```
