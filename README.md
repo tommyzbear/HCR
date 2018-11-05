@@ -52,3 +52,6 @@ Download NITE-Bin-Dev-Linux-x64-v1.5.2.23.tar
 
 ```cd NITE-Bin-Dev-Linux-x64-v1.5.2.23```
 ```sudo ./install.sh```
+
+
+https://www.20papercups.net/programming/kinect-on-ubuntu-with-openni/comment-page-1/
