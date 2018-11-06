@@ -55,3 +55,11 @@ Download NITE-Bin-Dev-Linux-x64-v1.5.2.23.tar
 
 
 https://www.20papercups.net/programming/kinect-on-ubuntu-with-openni/comment-page-1/
+
+## Installing driver for P3AT
+
+Open terminal in same directory as ```libaria_2.9.4+ubuntu16_amd64.deb```
+
+```dpkg -i libaria_2.9.4+ubuntu16_amd64.deb```
+
+Then go through ```P3ATs_QuickStartGuide.txt```
