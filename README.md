@@ -63,3 +63,16 @@ Open terminal in same directory as ```libaria_2.9.4+ubuntu16_amd64.deb```
 ```dpkg -i libaria_2.9.4+ubuntu16_amd64.deb```
 
 Then go through ```P3ATs_QuickStartGuide.txt```
+
+## Setting up Gazebo
+
+```sudo apt install gazebo7```
+
+OpenGL support can be disabled by setting the environment variable ```SVGA_VGPU10=0```.
+
+```export SVGA_VGPU10=0```
+
+Gazebo starts now and runs compared to the not 3D accelerated way pretty smooth on a T460p if the resolution of the VM guest system is not too high (<< 4K).
+
+To make the change permanent:
+```echo "export SVGA_VGPU10=0" >> ~/.bashrc```
