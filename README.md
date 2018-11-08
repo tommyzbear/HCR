@@ -60,19 +60,26 @@ https://www.20papercups.net/programming/kinect-on-ubuntu-with-openni/comment-pag
 ### If the driver is unaccesscible, try the following
 
 Make sure your user belongs to the ```video``` and ```audio``` groups
+
 ```sudo adduser $USER video```
 ```sudo adduser $USER audio```
 
 Check if devices are listed in usb ports
+
 ```sudo lsusb -v | grep Microsoft```
 
 If not present, run 
+
 ```echo -1 | sudo tee -a /sys/module/usbcore/parameters/autosuspend```
+
 then reconnect the devices
 
 Also check 
+
 ```sudo nano /etc/udev/rules.d/55-primesense-usb.rules```
+
 Make sure your product is listed below, e.g.
+
 ```
 # PrimeSense Devices
 SUBSYSTEM=="usb", ATTR{idProduct}=="0200", ATTR{idVendor}=="1d27", MODE:="0666", OWNER:="root", GROUP:="video"
@@ -93,6 +100,7 @@ SUBSYSTEM=="usb", ATTR{idProduct}=="02c3", ATTR{idVendor}=="045e", MODE:="0666",
 ```
 
 Add read/write accessibilities to usb port:
+
 ```sudo chmod a+rw /dev/bus/usb//```
 
 Then restart
