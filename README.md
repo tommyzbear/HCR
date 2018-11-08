@@ -53,8 +53,49 @@ Download NITE-Bin-Dev-Linux-x64-v1.5.2.23.tar
 ```cd NITE-Bin-Dev-Linux-x64-v1.5.2.23```
 ```sudo ./install.sh```
 
+### Or follow the instruction below
 
 https://www.20papercups.net/programming/kinect-on-ubuntu-with-openni/comment-page-1/
+
+### If the driver is unaccesscible, try the following
+
+Make sure your user belongs to the ```video``` and ```audio``` groups
+```sudo adduser $USER video```
+```sudo adduser $USER audio```
+
+Check if devices are listed in usb ports
+```sudo lsusb -v | grep Microsoft```
+
+If not present, run 
+```echo -1 | sudo tee -a /sys/module/usbcore/parameters/autosuspend```
+then reconnect the devices
+
+Also check 
+```sudo nano /etc/udev/rules.d/55-primesense-usb.rules```
+Make sure your product is listed below, e.g.
+```
+# PrimeSense Devices
+SUBSYSTEM=="usb", ATTR{idProduct}=="0200", ATTR{idVendor}=="1d27", MODE:="0666", OWNER:="root", GROUP:="video"
+SUBSYSTEM=="usb", ATTR{idProduct}=="0300", ATTR{idVendor}=="1d27", MODE:="0666", OWNER:="root", GROUP:="video"
+SUBSYSTEM=="usb", ATTR{idProduct}=="0400", ATTR{idVendor}=="1d27", MODE:="0666", OWNER:="root", GROUP:="video"
+SUBSYSTEM=="usb", ATTR{idProduct}=="0500", ATTR{idVendor}=="1d27", MODE:="0666", OWNER:="root", GROUP:="video"
+SUBSYSTEM=="usb", ATTR{idProduct}=="0600", ATTR{idVendor}=="1d27", MODE:="0666", OWNER:="root", GROUP:="video"
+SUBSYSTEM=="usb", ATTR{idProduct}=="0601", ATTR{idVendor}=="1d27", MODE:="0666", OWNER:="root", GROUP:="video"
+
+#--avin mod--
+# Kinect
+SUBSYSTEM=="usb", ATTR{idProduct}=="02ae", ATTR{idVendor}=="045e", MODE:="0666", OWNER:="root", GROUP:="video"
+SUBSYSTEM=="usb", ATTR{idProduct}=="02ad", ATTR{idVendor}=="045e", MODE:="0666", OWNER:="root", GROUP:="audio"
+SUBSYSTEM=="usb", ATTR{idProduct}=="02b0", ATTR{idVendor}=="045e", MODE:="0666", OWNER:="root", GROUP:="video"
+SUBSYSTEM=="usb", ATTR{idProduct}=="02be", ATTR{idVendor}=="045e", MODE:="0666", OWNER:="root", GROUP:="audio"
+SUBSYSTEM=="usb", ATTR{idProduct}=="02bf", ATTR{idVendor}=="045e", MODE:="0666", OWNER:="root", GROUP:="video"
+SUBSYSTEM=="usb", ATTR{idProduct}=="02c3", ATTR{idVendor}=="045e", MODE:="0666", OWNER:="root", GROUP:="audio"
+```
+
+Add read/write accessibilities to usb port:
+```sudo chmod a+rw /dev/bus/usb//```
+
+Then restart
 
 ## Installing driver for P3AT
 
