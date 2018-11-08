@@ -1,0 +1,46 @@
+Go to http://robots.mobilerobots.com/wiki/Aria
+
+Donwload and install the appropriate version of the ARIA library (used to communicate with the Pioneer-like robots)
+
+To check that everything is working up to this point, turn on the robot, connect it to the serial port of the PC and run: /usr/local/Aria/examples/demo
+    If you are using a RS232-USB adapter, you will need to indicate the correct port to use: /usr/local/Aria/examples -rp /dev/ttyUSB0
+    If you are having permissions problems and want to run without sudo (needed for ROS), add yourself to the dialout group: sudo usermod -a -G dialout $USER
+        You might need to logoff and on again for the change to take effect
+
+If everything is ok you should be able to control the robot with the keyboard arrows and space bar to stop it. To get a report on the robot status, press "o" or "f". To exit press scape. 
+
+
+ROS
+Clone and build the rosaria package in your catkin workspace:
+    cd ~/catkin_ws/src
+    git clone https://github.com/amor-ros-pkg/rosaria.git src/rosaria
+    catkin_make
+
+
+Now test connection with:
+    roscore
+    (another terminal) rosrun rosaria RosAria
+                                            
+
+If everything is ok, you should now be able to control the robot with:
+
+rostopic pub -r 10 /RosAria/cmd_vel geometry_msgs/Twist "linear:
+  x: 0.01
+  y: 0.0
+  z: 0.0
+angular:
+  x: 0.0
+  y: 0.0
+  z: 0.0"
+
+  
+or: roslaunch joystick joystick topic:=/RosAria/cmd_vel
+
+
+Get the sonnar readings with: rostopic echo /RosAria/sonar
+
+To visualize the sonnar readings along with a model of the robot:
+    sudo apt install ros-kinetic-p2os-urdf
+    roslaunch p2os_urdf pioneer3at_urdf.launch
+    rosrun tf static_transform_publisher 0 0 0 0.0 0 0 base_link sonar 10
+    rviz
