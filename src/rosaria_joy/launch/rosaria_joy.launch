@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- RosAria and joy node-->
+  <node name="RosAria" pkg="rosaria" type="RosAria"/>
+  <node name="joy" pkg="joy" type="joy_node"/>
+
+  <!-- rosaria_joy node interfaces Xbox controller to rosaria -->
+  <node name="rosaria_joy" pkg="rosaria_joy"
+  type="rosaria_joy.py" output="screen">
+
+###RosAria###
+  <param name="port" value="/dev/ttyUSB0"/>
+  </node>
+</launch>
