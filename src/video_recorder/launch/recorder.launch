@@ -1,0 +1,21 @@
+<launch>
+  <arg name="video_topic" value="video_output"/>
+  <node name="video_recorder" pkg="video_recorder" type="recorder.py" output="screen" required="true">
+
+    <param name="output_width" type="int" value="640" />
+    <param name="output_height" type="int" value="480" />
+    <param name="output_path" value="/home/kexin/Videos/result.avi" />
+
+    <param name="output_topic" value="$(arg video_topic)" />
+
+    <param name="source1" value="/videofile/image_raw,0,0,320,240" />         <!-- left-top -->
+    <param name="source2" value="/openpose/image_raw,320,0,320,240" />        <!-- right-top -->
+    <param name="source3" value="/deepdrone/facetrack_img,0,240,320,240" />   <!-- right-bottom -->
+
+  </node>
+
+  <node name="image_view_grid" pkg="image_view" type="image_view"  respawn="false" output="screen" required="true">
+    <remap from="image" to="$(arg video_topic)"/>
+    <param name="autosize" value="true" />
+  </node>
+</launch>
