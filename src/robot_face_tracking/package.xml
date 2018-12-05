@@ -1,14 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>irobot_vision_tutorial</name>
+  <name>robot_face_tracking</name>
   <version>0.1.0</version>
-  <description>The irobot_vision_tutorial package for the Purdue SMART lab ROS tutorial on controlling iRobot create2 based on keyboard and vision-based approaches such as face detection and colored object detection </description>
-
-  <maintainer email="ramviyas@purdue.edu">Ramviyas Parasurman</maintainer>
-  <license>MIT</license>
-  <author email="lee1424@purdue.edu">Shaocheng Luo</author>
-  <author email="tmina@purdue.edu">Arabinda Samantaray</author>
-
+  <description>This package make use of the irobot_vision_tutorial package for the Purdue SMART lab ROS tutorial</description>
 
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>roscpp</build_depend>
@@ -20,11 +14,4 @@
   <exec_depend>roscpp</exec_depend>
   <exec_depend>rospy</exec_depend>
   <exec_depend>std_msgs</exec_depend>
-
-
-  <!-- The export tag contains other, unspecified, tags -->
-  <export>
-    <!-- Other tools can request additional information be placed here -->
-
-  </export>
 </package>

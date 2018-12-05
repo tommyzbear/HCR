@@ -1,0 +1,36 @@
+<launch>
+   <master auto="start"/>
+
+   <!-- TRANSFORMS -->
+   <node pkg="tf" type="static_transform_publisher" name="laser_scan_tf" args="0.1 0 0 0 0 0 base_link laser 100"/>
+   <!--node pkg="tf" type="static_transform_publisher" name="map_to_base_link" args="0.0 0.0 0.0 0 0 0.0 /map /base_link 100"/-->
+
+   <!-- NAVIGATION -->
+   <node pkg="gmapping" type="slam_gmapping" respawn="false" name="slam_gmapping" output="screen">
+     <param name="map_update_interval" value="2.0"/>
+     <param name="maxUrange" value="6.0"/>
+     <param name="iterations" value="1"/>
+     <param name="linearUpdate" value="0.25"/>
+     <param name="angularUpdate" value="0.262"/>
+     <param name="temporalUpdate" value="-1.0"/>
+     <param name="particles" value="300"/>
+     <param name="xmin" value="-50.0"/>
+     <param name="ymin" value="-50.0"/>
+     <param name="xmax" value="50.0"/>
+     <param name="ymax" value="50.0"/>
+     <param name="base_frame" value="base_link"/>
+   </node>
+
+   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+     <remap from="cmd_vel" to="RosAria/cmd_vel" />
+     <remap from="odom" to="RosAria/pose" />
+     <remap from="laser_scan_sensor" to="scan"/>
+     <param name="laser_scan_sensor" value="scan"/>
+     <rosparam file="$(find tracer_nav)/costmap_common_params.yaml" command="load" 		ns="global_costmap" />
+     <rosparam file="$(find tracer_nav)/costmap_common_params.yaml" command="load" ns="local_costmap" />
+     <rosparam file="$(find tracer_nav)/local_costmap_params.yaml" command="load" />
+     <rosparam file="$(find tracer_nav)/global_costmap_params.yaml" command="load" />
+     <rosparam file="$(find tracer_nav)/base_local_planner_params.yaml" command="load" />
+   </node>
+
+</launch> 

@@ -5,7 +5,11 @@ import rospy
 from std_msgs.msg import Float32MultiArray
 from sensor_msgs.msg import CompressedImage
 import sys
+import os
+
 sys.path.append('/opt/ros/kinetic/lib/python2.7/dist-packages')
+
+HOME_DIR = os.getenv("HOME")
 
 def image_callback(ros_data):
        
@@ -26,22 +30,17 @@ def image_callback(ros_data):
 		movement = [vel, rotation_angle]
 		publish_array = Float32MultiArray(data=movement)
 		pub.publish(publish_array)
-		#pub.publish(vel)
 		rospy.loginfo('Velocity: %f , Rotation Angle: %f', movement[0], movement[1])		
 		cv2.imshow('Video',gray)
 		cv2.waitKey(2)
 		
-	
-        
-      
 
 if __name__ == '__main__':
     try:
 	rospy.init_node('detect_face', anonymous=True)
 	pub=rospy.Publisher('movement',Float32MultiArray,queue_size=1)
-	#vel_pub=rospy.Publisher('velocity',Float32,queue_size=1)
-	face_cascade=cv2.CascadeClassifier('/home/sugi/catkin_ws/src/irobot_vision_tutorial/scripts/haarcascade_frontalface_default.xml')
-	sub = rospy.Subscriber("/usb_cam/image_raw/compressed", CompressedImage, image_callback,  queue_size = 1)
+	face_cascade=cv2.CascadeClassifier(HOME_DIR + '/catkin_ws/src/robot_face_tracking/scripts/haarcascade_frontalface_default.xml')
+	sub = rospy.Subscriber("/camera/rgb/image_rect_color/compressed", CompressedImage, image_callback,  queue_size = 1)
 	rospy.spin()
     except rospy.ROSInterruptException:
 	pass
