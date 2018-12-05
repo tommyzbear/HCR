@@ -14,10 +14,10 @@
      <param name="angularUpdate" value="0.262"/>
      <param name="temporalUpdate" value="-1.0"/>
      <param name="particles" value="300"/>
-     <param name="xmin" value="-50.0"/>
-     <param name="ymin" value="-50.0"/>
-     <param name="xmax" value="50.0"/>
-     <param name="ymax" value="50.0"/>
+     <param name="xmin" value="-10.0"/>
+     <param name="ymin" value="-10.0"/>
+     <param name="xmax" value="20.0"/>
+     <param name="ymax" value="20.0"/>
      <param name="base_frame" value="base_link"/>
    </node>
 

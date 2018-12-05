@@ -4,8 +4,8 @@ global_costmap:
   update_frequency: 1.0
   publish_frequency: 1.0
   static_map: false
-  width: 50
-  height: 50
+  width: 20
+  height: 20
 #origin_x: -25
 #origin_y: -25
   resolution: 0.1
