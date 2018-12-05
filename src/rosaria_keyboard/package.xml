@@ -3,7 +3,8 @@
   <name>rosaria_keyboard</name>
   <version>1.0.0</version>
   <description>The rosaria_keyboard package</description>
-
+	<maintainer email="tommyz@todo.com">tommyz</maintainer>
+	<license>TODO</license>
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>geometry_msgs.msg</build_depend>
   <build_depend>rospy</build_depend>
