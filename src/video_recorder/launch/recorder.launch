@@ -4,7 +4,7 @@
 
     <param name="output_width" type="int" value="640" />
     <param name="output_height" type="int" value="480" />
-    <param name="output_path" value="$HOME/Videos/result.mp4" />
+    <param name="output_path" value="/Videos/result.mp4" />
 
     <param name="output_topic" value="$(arg video_topic)" />
 

@@ -5,12 +5,13 @@ import cv2
 import numpy as np
 import datetime
 import time
-
+import os
 import rospy
 
 from sensor_msgs.msg import Image
 from cv_bridge import CvBridge, CvBridgeError
 
+home = os.getenv("HOME")
 
 def opencv_version():
     v = cv2.__version__.split('.')[0]
@@ -139,7 +140,7 @@ if __name__ == '__main__':
     output_fps = int(rospy.get_param('~output_fps', '30'))
     output_format = rospy.get_param('~output_format', 'xvid')
     output_topic = rospy.get_param('~output_topic', '')
-    output_path = rospy.get_param('~output_path', '')
+    output_path = home + rospy.get_param('~output_path', '')
     output_path = output_path.replace('[timestamp]', datetime.datetime.now().strftime("%Y%m%d_%H%M%S"))
     num_videos = int(rospy.get_param('~num_videos', '1000'))
 
