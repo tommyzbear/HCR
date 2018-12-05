@@ -36,22 +36,28 @@ sudo cp ~Kinect/libfreenect/platform/linux/udev/51-kinect.rules /etc/udev/rules.
 
 Download OpenNi-Bin-Dev-Linux-x64-v1.5.7.10.tar
 
-```cd OpenNI-Bin-Dev-Linux-x64-v1.5.7.10```
-```sudo ./install.sh```
+```
+cd OpenNI-Bin-Dev-Linux-x64-v1.5.7.10
+sudo ./install.sh
+```
 
 ### Sensor
 
 Download Sensor-Bin-Linux-x64-v5.1.2.1.tar.bz2
 
-```cd Sensor-Bin-Linux-x64-v5.1.2.1```
-```sudo ./install.sh```
+```
+cd Sensor-Bin-Linux-x64-v5.1.2.1
+sudo ./install.sh
+```
 
 ### NITE
 
 Download NITE-Bin-Dev-Linux-x64-v1.5.2.23.tar
 
-```cd NITE-Bin-Dev-Linux-x64-v1.5.2.23```
-```sudo ./install.sh```
+```
+cd NITE-Bin-Dev-Linux-x64-v1.5.2.23
+sudo ./install.sh
+```
 
 ### Or follow the instruction below
 
@@ -61,8 +67,10 @@ https://www.20papercups.net/programming/kinect-on-ubuntu-with-openni/comment-pag
 
 Make sure your user belongs to the ```video``` and ```audio``` groups
 
-```sudo adduser $USER video```
-```sudo adduser $USER audio```
+```
+sudo adduser $USER video
+sudo adduser $USER audio
+```
 
 Check if devices are listed in usb ports
 
@@ -105,7 +113,7 @@ Add read/write accessibilities to usb port:
 
 Then restart
 
-## Installing driver for P3AT
+## Installing RosAria driver for P3AT
 
 Open terminal in same directory as ```libaria_2.9.4+ubuntu16_amd64.deb```
 
