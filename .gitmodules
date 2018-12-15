@@ -1,0 +1,6 @@
+[submodule "src/audio_common"]
+	path = src/audio_common
+	url = git://github.com/ros-drivers/audio_common.git
+[submodule "src/skeleton_markers"]
+	path = src/skeleton_markers
+	url = git://github.com/pirobot/skeleton_markers.git
