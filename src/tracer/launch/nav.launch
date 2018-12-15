@@ -1,0 +1,15 @@
+<launch>
+	<node pkg="rplidar_ros" type="rplidarNode" respawn="false" name="rplidar" output="screen">
+		<param name="serial_port" value="/dev/ttyUSB0" />
+		<param name="frame_id" value="laser"/>
+	</node>
+	<node name="RosAria" pkg="rosaria" type="RosAria">
+		<param name="~port" value="/dev/ttyUSB2" />
+	</node>
+	<node name="teleop_twist_keyboard" pkg="rosaria_keyboard" type="rosaria_keyboard.py"/>
+	<include file="$(find tracer_nav)/tracer_nav.launch" />
+	<include file="$(find tracer)/launch/mapping.launch" />
+	<node pkg="laser_filters" type="scan_to_scan_filter_chain" name="laser_scan_filter">
+		<rosparam file="$(find tracer)/launch/laser_scan_filter_config.yaml" command="load"/>
+	</node>
+</launch>

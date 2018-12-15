@@ -1,0 +1,27 @@
+<launch>
+   <master auto="start"/>
+
+   <!-- TRANSFORMS -->
+   <node pkg="tf" type="static_transform_publisher" name="laser_scan_tf" args="0.1 0 0 3.14 0 0 base_link laser 100"/>
+
+   <node name="amcl" pkg="amcl" type="amcl">
+   	 <param name="scan" value="scan_filtered"/>
+     <remap from="scan" to="scan_filtered"/>
+     <param name="odom_frame_id" value="odom"/>
+     <param name="base_frame_id" value="base_link"/>
+     <param name="global_frame_id" value="map"/>
+	 </node>
+
+   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+     <remap from="cmd_vel" to="RosAria/cmd_vel" />
+     <remap from="odom" to="RosAria/pose" />
+     <remap from="laser_scan_sensor" to="scan_filtered"/>
+     <param name="laser_scan_sensor" value="scan_filtered"/>
+     <rosparam file="$(find tracer_nav)/costmap_common_params.yaml" command="load" ns="global_costmap" />
+     <rosparam file="$(find tracer_nav)/costmap_common_params.yaml" command="load" ns="local_costmap" />
+     <rosparam file="$(find tracer_nav)/local_costmap_params.yaml" command="load" />
+     <rosparam file="$(find tracer_nav)/global_costmap_params.yaml" command="load" />
+     <rosparam file="$(find tracer_nav)/base_local_planner_params.yaml" command="load" />
+   </node>
+
+</launch> 

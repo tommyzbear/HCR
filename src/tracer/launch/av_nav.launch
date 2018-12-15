@@ -1,0 +1,30 @@
+<launch>
+	<node pkg="rplidar_ros" type="rplidarNode" respawn="false" name="rplidar" output="screen">
+		<param name="serial_port" value="/dev/ttyUSB0" />
+		<param name="frame_id" value="laser"/>
+	</node>
+	<node name="RosAria" pkg="rosaria" type="RosAria">
+		<param name="~port" value="/dev/ttyUSB2" />
+	</node>
+	<node name="teleop_twist_keyboard" pkg="rosaria_keyboard" type="rosaria_keyboard.py"/>
+	<include file="$(find tracer_nav)/tracer_nav.launch" />
+	<include file="$(find tracer)/launch/mapping.launch" />
+	<node pkg="laser_filters" type="scan_to_scan_filter_chain" name="laser_scan_filter" >
+		<rosparam file="$(find tracer)/launch/laser_scan_filter_config.yaml" command="load"/>
+	</node>
+	<include file="$(find skeleton_markers)/launch/skeleton.launch"/>
+
+	<node pkg="skeleton_tracker" name="tracking_goal" type="tracking_goal.py"/>
+		
+	<include file="$(find openni_launch)/launch/openni.launch">
+		<arg name="device_id" value="2@036"/>		
+		<arg name="camera" value="kinect2"/>
+	</include>
+	<!--include file="$(find openni_launch)/launch/openni.launch">
+		<arg name="device_id" value="2@92"/>		
+		<arg name="camera" value="kinect2"/>	
+	</include-->
+	<!--node pkg="audio_video" name="audio_control" type="audio_control.py"/>
+	<node pkg="audio_video" name="video_control" type="video_control.py"/>
+	<node pkg="audio_video" name="video_combine" type="video_combine.py"/-->
+</launch>
