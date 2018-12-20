@@ -141,4 +141,4 @@ Launch ```av_nav.launch``` with ```roslaunch``` will start running the nodes for
 Video filming components ```audio_control video_control video_combine```will need to be ran. 
 Gesture recognition node is located in ```gesture```package
 Voice command recognition node can be ran by ```rosrun voice_recognition main.py```
-Kinect platform is powered by rosserial, please ensure to install rosserial package. Arduino script is the camera_holder.ino.
+Kinect platform is powered by rosserial, please ensure to install rosserial package. Arduino script is the ```camera_holder.ino```.
