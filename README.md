@@ -2,6 +2,8 @@
 
 4th Year Imperial College EEE coursework
 
+Video: https://youtu.be/wTMhObNkLsI
+
 ## Installing Drivers and Framework for Kinect
 
 ### OpenKinect
