@@ -133,3 +133,10 @@ Gazebo starts now and runs compared to the not 3D accelerated way pretty smooth 
 
 To make the change permanent:
 ```echo "export SVGA_VGPU10=0" >> ~/.bashrc```
+
+# Running the files
+Launch ```av_nav.launch``` with ```roslaunch``` will start running the nodes for RosAria, navigation, Openni for Kinect and skeleton_markers
+Video filming components ```audio_control video_control video_combine```will need to be ran. 
+Gesture recognition node is located in ```gesture```package
+Voice command recognition node can be ran by ```rosrun voice_recognition main.py```
+Kinect platform is powered by rosserial, please ensure to install rosserial package. Arduino script is under the sketchbook folder
