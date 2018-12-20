@@ -45,7 +45,7 @@
   }
   
   
-  ros::Subscriber<std_msgs::UInt16> sub("cmd", cmd_cb);
+  ros::Subscriber<std_msgs::UInt16> sub("servo", cmd_cb);
 
   void setup(){
     pinMode(13, OUTPUT);
